@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua Newsletter</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        max-width: 600px;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    p {
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .subscribe-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .subscribe-input {
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 70%;
+        font-size: 16px;
+    }
+
+    .subscribe-button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+</style>
+<div class="container">
+    <h1>Cadastre-se na Sua Newsletter Exclusiva</h1>
+    <p>Fique por dentro das últimas novidades e receba conteúdo exclusivo diretamente em sua caixa de entrada.</p>
+    <span th:text="${msg}"></span>
+    <form action="#" method="post" class="subscribe-form">
+        <input type="text" name="nome" class="subscribe-input" placeholder="Seu Nome" required>
+        <input type="email" name="email" class="subscribe-input" placeholder="Seu E-mail" required>
+        <input type="password" name="senha" class="subscribe-input" placeholder="Sua Senha" required>
+        <input type="tel" name="telefone" class="subscribe-input" placeholder="Seu Telefone" required>
+        <button type="submit" class="subscribe-button">Inscrever-se</button>
+    </form>
+</div>
+
+</body>
+</html>
