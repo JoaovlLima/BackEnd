@@ -1,4 +1,4 @@
-package main.java.webapp.escola_crud_jpa.Controller;
+package webapp.escola_crud_jpa.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import webapp.rhapp_jpa.Repository.FuncionarioRepository;
+import webapp.escola_crud_jpa.Repository.FuncionarioRepository;
 
 @Controller
-public class IndexController {
+public class indexController {
 
     @Autowired
     FuncionarioRepository fr;
