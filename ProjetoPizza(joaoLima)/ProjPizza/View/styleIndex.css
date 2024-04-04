@@ -74,10 +74,21 @@ header {
 }
 
 .card {
+    width: 350px;
+    height: 400px;
     border: 1px solid #ccc;
     border-radius: 8px;
     margin: 10px;
     padding: 10px;
+    display: grid;
+    justify-items: center;
+
+}
+.areaCard{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-around;
 }
 
 .card-image {
