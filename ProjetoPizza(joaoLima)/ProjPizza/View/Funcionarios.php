@@ -1,8 +1,8 @@
 <?php
 
 use LDAP\Result;
-
-require_once 'F:\Arquivos\Lição\PROGRAMACAO\2024\BackEnd\PhpProjetos\ProjetoPizza(joaoLima)\ProjPizza\Connection/conectabd.php';
+include_once('../templates/hearder.php');
+require_once '..\Connection/conectabd.php';
 // session_start();
 // if (empty($_SESSION)) {
 //     // Significa que as variáveis de SESSAO não foram definidas.
@@ -58,19 +58,7 @@ if ($result) {
 </style>
     <body>
     <header>
-        <div class="left-section">
-            <img src="../img/iconCasa.png" alt="Home Icon">
-            <a href="/View/index.php">Home</a>
-            
-            <img src="../img/iconCardapio.png" alt="Menu Icon">
-            <a href="#">Cardápio</a>
-            <a href="/View/Funcionarios.php">funcionario</a>
-        </div>
-        <img src="../img/imgFundo-.png" alt="Logo" class="logo">
-        <div class="right-section">
-            <a href="#">Meu Perfil</a>
-            <img src="../img/imgPerfil.png" alt="Profile Icon">
-        </div>
+    <?=template_header('Visualizar Pedidos')?>
     </header>
     <form action="Funcionarios.php" method="post">
 <div class="pesquisa">

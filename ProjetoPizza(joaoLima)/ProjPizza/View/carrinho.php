@@ -1,7 +1,7 @@
 <?php
 session_start();
-
-include_once('F:\Arquivos\Lição\PROGRAMACAO\2024\BackEnd\PhpProjetos\ProjetoPizza(joaoLima)\ProjPizza\Connection/conectabd.php');
+include_once('../templates/hearder.php');
+include_once('..\Connection/conectabd.php');
 
 if (isset($_POST['produto_id']) && isset($_POST['quantidade'])) {
 
@@ -55,21 +55,11 @@ if (isset($_POST['produto_id']) && isset($_POST['quantidade'])) {
 </head>
 
 <body>
-    <header>
-        <div class="left-section">
-            <img src="../img/iconCasa.png" alt="Home Icon">
-            <a href="/View/index.php">Home</a>
+   
+<header>
+<?=template_header('Visualizar Pedidos')?>
+</header>
 
-            <img src="../img/iconCardapio.png" alt="Menu Icon">
-            <a href="#">Cardápio</a>
-            <a href="/View/Funcionarios.php">funcionario</a>
-        </div>
-        <img src="../img/imgFundo-.png" alt="Logo" class="logo">
-        <div class="right-section">
-            <a href="#">Meu Perfil</a>
-            <img src="../img/imgPerfil.png" alt="Profile Icon">
-        </div>
-    </header>
     <div class="carrinho">
         <h1 class="titulo">Carrinho de Compras</h1>
         <?php
@@ -103,6 +93,10 @@ if (isset($_POST['produto_id']) && isset($_POST['quantidade'])) {
             }
             echo "<form action='../Connection/fazerPedido.php' method='POST'>";
 
+            // echo "<label for='nome'>Nome:</label>";
+            // echo "<input type='text' id='nome' name='nome' required><br><br>";
+            // echo "<label for='rg'>RG:</label>";
+            // echo "<input type='text' id='rg' name='rg' required><br><br>";
             echo "<label for='endereco'>Endereço:</label>";
             echo "<input type='text' id='endereco' name='endereco' required><br><br>";
             echo "<label for='rg'>RG:</label>";
