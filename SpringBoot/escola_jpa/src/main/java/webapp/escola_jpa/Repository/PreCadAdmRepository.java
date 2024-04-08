@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface PreCadAdmRepository extends CrudRepository<PreCadAdm, String> {
    
-    PreCadAdm findByCpf(String cpf);;
+    PreCadAdm findByCpf(String cpf);
 }

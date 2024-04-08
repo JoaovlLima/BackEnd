@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Docentes</title>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/lista.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:insert="~{fragmentos/header_interna :: header}"></div>
+    <h1>Lista de Docentes</h1>
+    <a href="/cad-docente" class="button">Cadastrar Professor</a>
+    <table>
+        <thead>
+            <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Matéria</th>
+                <th>Turma</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="docente : ${docentes}">
+                <td th:text="${docente.cpf}"></td>
+                <td th:text="${docente.nome}"></td>
+                <td th:text="${docente.materia}"></td>
+                <td th:text="${docente.turma}"></td>
+                <td class="btn-cell">
+                    <a th:href="@{'/deletar-docente/' + ${docente.cpf} }" class="btn-excluir">
+                        <i class="fas fa-trash-alt"></i> Excluir
+                    </a>
+                </td>
+                <td class="btn-cell">
+                    <a th:href="@{'/edit-docente/' + ${docente.cpf} }" class="btn-editar">
+                        <i class="fas fa-edit"></i> Editar
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

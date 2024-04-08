@@ -4,14 +4,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import jakarta.persistence.Entity;
-import webapp.escola_jpa.Model.Docente;
+import webapp.escola_jpa.Model.Aluno;
 import java.util.List;
 
-public interface DocenteRepository extends CrudRepository<Docente, String>  { // interface te permite a ter metodos vazios 
+public interface AlunoRepository extends CrudRepository<Aluno, String>  { // interface te permite a ter metodos vazios 
     
-    Docente findByCpf(String cpf);
+    Aluno findByRg(String rg);
+
+ 
     
   
 }
-    
-

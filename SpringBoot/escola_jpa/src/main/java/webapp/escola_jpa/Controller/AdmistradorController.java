@@ -1,5 +1,7 @@
 package webapp.escola_jpa.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import webapp.escola_jpa.Model.Administrador;
+import webapp.escola_jpa.Model.Aluno;
 import webapp.escola_jpa.Model.Docente;
 import webapp.escola_jpa.Model.PreCadAdm;
 import webapp.escola_jpa.Repository.AdministradorRepository;
+import webapp.escola_jpa.Repository.AlunoRepository;
 import webapp.escola_jpa.Repository.DocenteRepository;
 import webapp.escola_jpa.Repository.PreCadAdmRepository;
 
@@ -24,6 +28,8 @@ public class AdmistradorController {
     private DocenteRepository dr;
     @Autowired
     private PreCadAdmRepository pcar;
+    @Autowired
+    private AlunoRepository alr;
 
     boolean acessoAdm = false;
 
@@ -75,6 +81,16 @@ public class AdmistradorController {
         
         return "interna/interna-adm";
     }
+    @PostMapping("cadastro-aluno")
+    public String postCadastroAluno(Aluno aluno) {
+       
+        alr.save(aluno);
+        System.out.println("Cadastro Realizado com Sucesso");
+        
+        return "interna/interna-adm";
+    }
+
+   
     
     }
     

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Aluno</title>
+
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/cadastro.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div th:insert="~{fragmentos/header_interna :: header}"><!-- barra de menu --></div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="register-container">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Editar Aluno</h3>
+                        </div>
+                        <div class="card-body">
+                            <form  method="post">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Nome" name="nome" th:value="${aluno.nome}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Rg" name="rg" th:value="${aluno.rg}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Turma" name="turma" th:value="${aluno.turma}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Nova Senha" name="novaSenha">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Confirmar Nova Senha" name="confirmarNovaSenha">
+                                </div>
+                                <button type="submit" class="btn btn-block btn-register"><i class="fas fa-save"></i> Atualizar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
