@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Docente implements Serializable {
@@ -12,6 +14,10 @@ public class Docente implements Serializable {
     private String cpf;
 
     private String nome;
+
+    @ManyToOne
+    @JoinColumn(name = "id_materias")
+    private Materias materias;
     private String materia;
     private String turma;
     private String senha;
