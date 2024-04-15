@@ -23,6 +23,12 @@ private AlunoRepository ar;
         mv.addObject("alunos", ar.findAll());
         return mv;
     }
+    @GetMapping("/aluno-filtrado")
+    public ModelAndView filtroAluno() {
+        ModelAndView mv = new ModelAndView("fragmentos/aluno-filtrado");
+        mv.addObject("alunos", ar.findAll());
+        return mv;
+    }
 
     @RequestMapping(value = "/deletar-aluno/{rg}", method = RequestMethod.GET)
     public String deletarAluno(@PathVariable("rg") String rg) {

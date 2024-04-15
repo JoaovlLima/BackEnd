@@ -1,0 +1,20 @@
+<table>
+    <thead>
+        <tr>
+            <th>Rg</th>
+            <th>Nome</th>
+            <th>Turma</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="aluno : ${alunos}">
+            <th:block th:if = "${aluno.turma == docente.turma}">
+            <td th:text="${aluno.rg}"></td>
+            <td th:text="${aluno.nome}"></td>
+            <td th:text="${aluno.turma}"></td>
+        </th:block>
+
+        </tr>
+    </tbody>
+</table>

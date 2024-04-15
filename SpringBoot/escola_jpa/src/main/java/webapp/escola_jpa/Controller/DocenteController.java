@@ -17,7 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.qos.logback.core.model.Model;
+import jakarta.servlet.http.HttpSession;
+import webapp.escola_jpa.Model.Aluno;
 import webapp.escola_jpa.Model.Docente;
+import webapp.escola_jpa.Repository.AlunoRepository;
 import webapp.escola_jpa.Repository.DocenteRepository;
 
 
@@ -26,34 +29,35 @@ public class DocenteController {
    
     @Autowired
 private DocenteRepository dr;
-
+@Autowired
+private AlunoRepository ar;
 boolean acessoDocente = false;
 
+@Autowired
+private HttpSession httpSession;
+
 @PostMapping("acesso-docente")
-    public String acessoDocente(@RequestParam String cpf,
-            @RequestParam String senha, ModelAndView model) {
-               
-        try {
-            boolean verificaCpf = dr.existsById(cpf);
-            boolean verificaSenha = dr.findByCpf(cpf).getSenha().equals(senha);
-            String url = "";
-            System.out.println(verificaCpf);
-            System.out.println(verificaSenha);
-            if (verificaCpf && verificaSenha) {
-                acessoDocente = true;
-                
-                System.out.println("logado");
-               
-                url = "redirect:/home";
-            } else {
-                url = "redirect:/login-docente";
-            }
-            return url;
-        } catch (Exception e) {
+public String acessoDocente(@RequestParam String cpf, @RequestParam String senha) {
+    try {
+        boolean verificaCpf = dr.existsById(cpf);
+        boolean verificaSenha = dr.findByCpf(cpf).getSenha().equals(senha);
+
+        if (verificaCpf && verificaSenha) {
+           // Recuperando as informações do docente
+           Docente docente = dr.findByCpf(cpf);
+           // Armazenando as informações do docente na sessão
+           httpSession.setAttribute("docente", docente);
+           // Definindo loggedIn como true na sessão
+           httpSession.setAttribute("loggedIn", true);
+            return "redirect:/home";
+        } else {
             return "redirect:/login-docente";
         }
-
+    } catch (Exception e) {
+        return "redirect:/login-docente";
     }
+}
+
 //     @GetMapping("/a")
 // public ModelAndView homeHeader(Model model,RedirectAttributes attributes) {
 //     ModelAndView modelAndView = new ModelAndView("/home");
@@ -92,4 +96,30 @@ boolean acessoDocente = false;
         dr.save(docente);
         return "redirect:/list-docente";
     }
+
+    @GetMapping("/lancar-notas")
+    public ModelAndView lancarNotas(HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView("areaProf/lancar-notas");
+        Docente docente = (Docente) session.getAttribute("docente");
+        if (docente != null) {
+           
+        
+        modelAndView.addObject("docente", docente);
+        modelAndView.addObject("alunos", ar.findAll());
+            
+        } else {
+            // Redirecionar para a página de login se o professor não estiver logado
+            modelAndView.setViewName("redirect:/login-docente");
+        }
+        return modelAndView;
+    }
+    
+@GetMapping("/logout")
+public String logout(HttpSession session) {
+    // Limpa todos os atributos da sessão
+    session.invalidate();
+    // Redireciona o usuário para a página de login
+    return "redirect:/login-docente";
+}
+
 }

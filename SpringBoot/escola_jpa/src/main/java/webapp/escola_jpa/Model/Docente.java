@@ -16,7 +16,7 @@ public class Docente implements Serializable {
     private String nome;
 
     @ManyToOne
-    @JoinColumn(name = "id_materias")
+    @JoinColumn(name = "id_materias", referencedColumnName = "id")
     private Materias materias;
     private String materia;
     private String turma;
