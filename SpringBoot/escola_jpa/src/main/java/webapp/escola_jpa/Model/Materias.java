@@ -1,9 +1,14 @@
 package webapp.escola_jpa.Model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Materias {
@@ -17,8 +22,22 @@ public class Materias {
     private String descricao;
     private String duracao;
 
+    @ManyToMany(mappedBy = "materias", cascade = CascadeType.ALL)
+    private Set<Aluno> alunos = new HashSet<>();
+
+    public void adicionarAluno(Aluno aluno) {
+        this.alunos.add(aluno);
+        aluno.getMaterias().add(this);
+    }
+
     public static long getSerialversionuid() {
         return serialVersionUID;
+    }
+    public Set<Aluno> getAlunos() {
+        return alunos;
+    }
+    public void setAlunos(Set<Aluno> alunos) {
+        this.alunos = alunos;
     }
     public long getId() {
         return id;

@@ -13,6 +13,11 @@
             <td th:text="${aluno.rg}"></td>
             <td th:text="${aluno.nome}"></td>
             <td th:text="${aluno.turma}"></td>
+            <td class="btn-cell">
+                <a th:href="@{'/lancamento/' + ${aluno.rg} }" class="btn-excluir">
+                    <i class="fas fa-trash-alt"></i> Lançar
+                </a>
+            </td>
         </th:block>
 
         </tr>

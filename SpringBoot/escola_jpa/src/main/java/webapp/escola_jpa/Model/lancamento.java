@@ -20,7 +20,7 @@ public class lancamento implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
         private long id_lancamento;
     @ManyToOne
-    @JoinColumn(name = "materias")
+    @JoinColumn(name = "materias", referencedColumnName = "materia")
     private Docente materia;
 
     public static long getSerialversionuid() {
@@ -68,7 +68,7 @@ public class lancamento implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "nome")
+    @JoinColumn(name = "nome", referencedColumnName = "nome")
     private Aluno nomeAluno;
     private double nota;
     

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Matéria ao Aluno</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div th:insert="~{fragmentos/header_interna :: header}"></div>
+    <h1>Adicionar Matéria ao Aluno</h1>
+    <form action="/adicionar-materia-aluno" method="post">
+        <input type="hidden" name="aluno_rg" th:value="${alunoRg}">
+        <label for="materia">Selecione a Matéria:</label>
+        <select name="materia" id="materia">
+            <!-- Aqui você pode adicionar opções para cada matéria -->
+            <option value="1">Matemática</option>
+            <option value="2">História</option>
+            <!-- Adicione mais opções conforme necessário -->
+        </select>
+        <br>
+        <input type="submit" value="Adicionar Matéria">
+    </form>
+</body>
+</html>

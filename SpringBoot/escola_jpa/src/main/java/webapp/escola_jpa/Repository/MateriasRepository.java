@@ -10,7 +10,8 @@ import java.util.List;
 
 public interface MateriasRepository extends CrudRepository<Materias, Long> {
     
-   Materias findById(long id);
+   Iterable<Materias> findAll();
+
 
 
    
