@@ -41,10 +41,7 @@ public class IndexController {
         return "cadastro/cad-adm";
     }
    
-    @GetMapping("/cad-aluno")
-    public String acessoCadaluno() {
-        return "interna/aluno/cad-aluno";
-    }
+   
     
   
     

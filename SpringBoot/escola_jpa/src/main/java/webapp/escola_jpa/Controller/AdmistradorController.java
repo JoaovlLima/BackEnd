@@ -1,6 +1,10 @@
 package webapp.escola_jpa.Controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -95,38 +99,43 @@ public class AdmistradorController {
     //     return "interna/interna-adm";
     // }
     @PostMapping("/cadastro-aluno")
-    public String postCadastroAluno(@RequestParam("materia_aluno[]") List<String> materia_aluno,
-            @RequestParam String rg,
-            @RequestParam String nome,
-            @RequestParam String senha,
-            @RequestParam String turma,
-            Model model) {
-        // Verifica se algum campo obrigatório está vazio
-        if (nome == null || nome.isEmpty() ||
-                rg == null || rg.isEmpty() ||
-                materia_aluno == null || materia_aluno.isEmpty() ||
-                senha == null || senha.isEmpty()) {
-            model.addAttribute("mensagem", "Por favor, preencha todos os campos.");
-            return "interno/interna-adm";
-        }
-
-        // Crie um novo aluno e adicione as disciplinas selecionadas
-        Aluno aluno = new Aluno();
-        aluno.setNome(nome);
-        aluno.setRg(rg);
-        aluno.setSenha(senha);
-        for (String materia_alunoId : materia_aluno) {
-            Materias materias = mr.findById(Long.parseLong(materia_alunoId)).orElse(null);
-            if (materias != null) {
-                aluno.adicionarMaterias(materias);
-            }
-        }
-
-        // Salva o aluno
-        alr.save(aluno);
-        model.addAttribute("mensagem", "Cadastro de aluno realizado com sucesso!");
-        return "interno/interna-adm";
+public String postCadastroAluno(@RequestParam("materia_aluno[]") List<String> materia_aluno,
+        @RequestParam String rg,
+        @RequestParam String nome,
+        @RequestParam String senha,
+        @RequestParam String turma,
+        Model model) {
+    // Verifica se algum campo obrigatório está vazio
+    if (nome == null || nome.isEmpty() ||
+            rg == null || rg.isEmpty() ||
+            materia_aluno == null || materia_aluno.isEmpty() ||
+            senha == null || senha.isEmpty()) {
+        model.addAttribute("mensagem", "Por favor, preencha todos os campos.");
+        return "interna/interna-adm";
     }
+
+    // Verifica se o aluno já existe no banco de dados
+    Optional<Aluno> alunoOptional = alr.findById(rg);
+    Aluno aluno = alunoOptional.orElseGet(() -> new Aluno()); // Se não existir, cria um novo aluno
+
+    // Preenche os detalhes do aluno
+    aluno.setNome(nome);
+    aluno.setRg(rg);
+    aluno.setSenha(senha);
+    // Atualiza as disciplinas selecionadas para o aluno
+    Set<Materias> materiasSelecionadas = new HashSet<>();
+    for (String materia_alunoId : materia_aluno) {
+        Optional<Materias> materiasOptional = mr.findById(Long.parseLong(materia_alunoId));
+        materiasOptional.ifPresent(materiasSelecionadas::add);
+    }
+    aluno.setMaterias(materiasSelecionadas);
+
+    // Salva o aluno no banco de dados
+    alr.save(aluno);
+    model.addAttribute("mensagem", "Cadastro de aluno realizado com sucesso!");
+    return "interna/interna-adm";
+}
+
 
    
     

@@ -4,7 +4,7 @@
 // usuario
 // senha
 $endereco = 'localhost';
-$banco = 'pd_ex4';
+$banco = 'ProjPizza';
 $adm = 'postgres';
 $senha = 'postgres';
 

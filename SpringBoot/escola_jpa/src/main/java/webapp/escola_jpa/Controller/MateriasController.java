@@ -24,6 +24,13 @@ ModelAndView mv = new ModelAndView("interna/docente/cad-docente");
 mv.addObject("materias", mr.findAll());
 return mv;
 }
+
+@RequestMapping(value = "/cad-aluno", method = RequestMethod.GET)
+public ModelAndView listarAluno() {
+ModelAndView mv = new ModelAndView("interna/aluno/cad-aluno");
+mv.addObject("materias", mr.findAll());
+return mv;
+}
     
     
 }

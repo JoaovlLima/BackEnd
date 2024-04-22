@@ -36,6 +36,13 @@
                             <div class="form-group">
                                 <input type="password" class="form-control" placeholder="Confirmar Senha">
                             </div>
+                            <div class="form-group">
+                            <label for="materias">Selecione as matérias:</label><br>
+                            <select id="materias" name="materia_aluno[]" multiple>
+                                <!-- Loop through all available subjects -->
+                                <option th:each="materia : ${materias}" th:value="${materia.id}" th:text="${materia.nome}"></option>
+                            </select><br><br>
+                        </div>
                             <button type="submit" class="btn btn-block btn-register"><i class="fas fa-user-plus"></i> Cadastrar</button>
                         </form>
                     </div>
