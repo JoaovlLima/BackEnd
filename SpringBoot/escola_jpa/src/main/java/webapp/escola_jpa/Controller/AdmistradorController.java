@@ -122,6 +122,7 @@ public String postCadastroAluno(@RequestParam("materia_aluno[]") List<String> ma
     aluno.setNome(nome);
     aluno.setRg(rg);
     aluno.setSenha(senha);
+    aluno.setTurma(turma);
     // Atualiza as disciplinas selecionadas para o aluno
     Set<Materias> materiasSelecionadas = new HashSet<>();
     for (String materia_alunoId : materia_aluno) {

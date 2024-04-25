@@ -37,7 +37,7 @@ boolean acessoDocente = false;
 private HttpSession httpSession;
 
 @PostMapping("acesso-docente")
-public String acessoDocente(@RequestParam String cpf, @RequestParam String senha) {
+public String acessoDocente(HttpSession session,@RequestParam String cpf, @RequestParam String senha) {
     try {
         boolean verificaCpf = dr.existsById(cpf);
         boolean verificaSenha = dr.findByCpf(cpf).getSenha().equals(senha);
@@ -45,7 +45,11 @@ public String acessoDocente(@RequestParam String cpf, @RequestParam String senha
         if (verificaCpf && verificaSenha) {
            // Recuperando as informações do docente
            Docente docente = dr.findByCpf(cpf);
+
+           //limpando a Session antes de logar
+           session.invalidate();
            // Armazenando as informações do docente na sessão
+
            httpSession.setAttribute("docente", docente);
            // Definindo loggedIn como true na sessão
            httpSession.setAttribute("loggedIn", true);

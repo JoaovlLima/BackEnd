@@ -35,6 +35,10 @@ public class IndexController {
     public String acessoLoginDoc() {
         return "login/login-docente";
     }
+    @GetMapping("/login-aluno")
+    public String acessoLoginAluno() {
+        return "login/login-aluno";
+    }
     
     @GetMapping("/cad-adm")
     public String acessoCadAdm() {

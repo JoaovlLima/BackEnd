@@ -7,13 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.servlet.http.HttpSession;
 import webapp.escola_jpa.Model.Aluno;
+import webapp.escola_jpa.Model.Docente;
 import webapp.escola_jpa.Model.Materias;
 import webapp.escola_jpa.Repository.AlunoRepository;
+import webapp.escola_jpa.Repository.LancamentoRepository;
 import webapp.escola_jpa.Repository.MateriasRepository;
 
 @Controller
@@ -23,6 +28,38 @@ public class AlunoController {
 private AlunoRepository ar;
   @Autowired
     private MateriasRepository mr;
+
+@Autowired 
+private LancamentoRepository lr;
+
+@Autowired
+HttpSession httpSession;
+
+@PostMapping("acesso-aluno")
+public String acessoDocente(HttpSession session,@RequestParam String rg, @RequestParam String senha) {
+    try {
+        boolean verificaRg = ar.existsById(rg);
+        boolean verificaSenha = ar.findByRg(rg).getSenha().equals(senha);
+
+        if (verificaRg && verificaSenha) {
+           // Recuperando as informações do docente
+           Aluno aluno = ar.findByRg(rg);
+
+            //limpando a Session antes de logar
+            session.invalidate();
+           // Armazenando as informações do docente na sessão
+           httpSession.setAttribute("aluno", aluno);
+           // Definindo loggedIn como true na sessão
+           httpSession.setAttribute("loggedIn", true);
+            return "redirect:/home";
+        } else {
+            return "redirect:/login-aluno";
+        }
+    } catch (Exception e) {
+        return "redirect:/login-aluno";
+    }
+}
+
 
     @GetMapping("/list-aluno")
     public ModelAndView listarDocentes() {
@@ -64,5 +101,23 @@ private AlunoRepository ar;
     public String atualizarAluno(Aluno aluno) {
         ar.save(aluno);
         return "redirect:/list-aluno";
+    }
+
+    @GetMapping("/list-boletim")
+    public ModelAndView listarBoletim(HttpSession session) {
+        ModelAndView mv = new ModelAndView("areaAluno/boletimAluno");
+       
+        Aluno aluno = (Aluno) session.getAttribute("aluno");
+        if (aluno != null) {
+           
+        
+        mv.addObject("aluno", aluno);
+        mv.addObject("boletim", lr.findAll());
+            
+        } else {
+            // Redirecionar para a página de login se o professor não estiver logado
+            mv.setViewName("redirect:/login-aluno");
+        }
+        return mv;
     }
 }

@@ -1,0 +1,22 @@
+<table>
+    <thead>
+        <tr>
+            <th>data</th>
+            <th>nota</th>
+            <th>rg</th>
+            <th>Materia</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="lancamento : ${boletim}">
+            <th:block th:if = "${lancamento.alunoNome == aluno.rg}"></th>
+            <td th:text="${lancamento.data}"></td>
+            <td th:text="${lancamento.nota}"></td>
+            <td th:text="${lancamento.alunoNome}"></td>
+            <td th:text="${lancamento.materiaNome}"></td>
+        </th:block>
+
+        </tr>
+    </tbody>
+</table>
