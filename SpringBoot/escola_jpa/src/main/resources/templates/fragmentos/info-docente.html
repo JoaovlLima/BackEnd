@@ -3,6 +3,9 @@
     <p>Nome: <span th:text="${docente.nome}"></span></p>
     <p>CPF: <span th:text="${docente.cpf}"></span></p>
     <p> Matéria: <span th:text="${docente.materia}"></span> </span></p>
-    <p> Turma: <span th:text="${docente.turma}"></span> </span></p>
+    <p>Turmas:</p>
+<ul>
+    <li th:each="turma : ${docente.turmas}" th:text="${turma.nome}"></li>
+</ul>
     <!-- Adicione outras informações do professor conforme necessário -->
 </div>

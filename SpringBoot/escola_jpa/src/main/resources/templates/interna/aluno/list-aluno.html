@@ -17,6 +17,7 @@
                 <th>Rg</th>
                 <th>Nome</th>
                 <th>Turma</th>
+                <th>Matérias</th>
                 
             </tr>
         </thead>
@@ -25,6 +26,11 @@
                 <td th:text="${aluno.rg}"></td>
                 <td th:text="${aluno.nome}"></td>
                 <td th:text="${aluno.turma}"></td>
+                <td>
+                    <ul>
+                        <li th:each="materia : ${aluno.materias}" th:text="${materia.nome}"></li>
+                    </ul>
+                </td>
                 <td class="btn-cell">
                     <a th:href="@{'/deletar-aluno/' + ${aluno.rg} }" class="btn-excluir">
                         <i class="fas fa-trash-alt"></i> Excluir
@@ -35,12 +41,6 @@
                         <i class="fas fa-edit"></i> Editar
                     </a>
                 </td>
-                <td class="btn-cell">
-                    <a th:href="@{'/add-materia/' + ${aluno.rg} }" class="btn-adicionar">
-                        <i class="fas fa-edit"></i> AdicionarMateria
-                    </a>
-                </td>
-
             </tr>
         </tbody>
     </table>

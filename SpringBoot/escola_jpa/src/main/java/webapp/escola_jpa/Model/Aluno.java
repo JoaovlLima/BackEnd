@@ -21,7 +21,7 @@ public class Aluno implements Serializable {
     private String turma;
     private String senha;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany()
     @JoinTable(name = "materia_aluno",
                joinColumns = @JoinColumn(name = "aluno_rg", referencedColumnName = "rg"),
                inverseJoinColumns = @JoinColumn(name = "materias_id", referencedColumnName = "id"))

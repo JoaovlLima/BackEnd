@@ -12,6 +12,7 @@ public interface LancamentoRepository extends CrudRepository<Lancamento, Long> {
    
     Lancamento findById(long id_lancamento);
 
+
  
     
 }

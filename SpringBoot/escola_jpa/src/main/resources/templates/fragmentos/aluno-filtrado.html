@@ -9,17 +9,21 @@
     </thead>
     <tbody>
         <tr th:each="aluno : ${alunos}">
-            <th:block th:if = "${aluno.turma == docente.turma}">
-            <td th:text="${aluno.rg}"></td>
-            <td th:text="${aluno.nome}"></td>
-            <td th:text="${aluno.turma}"></td>
-            <td class="btn-cell">
-                <a th:href="@{'/lancamento/' + ${aluno.rg} }" class="btn-excluir">
-                    <i class="fas fa-trash-alt"></i> Lançar
-                </a>
-            </td>
-        </th:block>
-
+            <th:block th:each="docente : ${docentes}">
+                <th:block th:each="turma : ${docente.turmas}" th:if="${aluno.turma == turma.nome}">
+                    <td th:text="${aluno.rg}"></td>
+                    <td th:text="${aluno.nome}"></td>
+                    <td th:text="${aluno.turma}"></td>
+                    
+                    <td class="btn-cell">
+                        <a th:href="@{'/lancamento/' + ${aluno.rg} }" class="btn-excluir">
+                            <i class="fas fa-trash-alt"></i> Lançar
+                        </a>
+                    </td>
+                </th:block>
+            </th:block>
         </tr>
+       
+        
     </tbody>
 </table>

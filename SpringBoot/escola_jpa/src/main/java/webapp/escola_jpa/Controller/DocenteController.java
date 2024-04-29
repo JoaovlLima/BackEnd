@@ -1,6 +1,7 @@
 
 package webapp.escola_jpa.Controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import ch.qos.logback.core.model.Model;
 import jakarta.servlet.http.HttpSession;
@@ -35,6 +38,7 @@ boolean acessoDocente = false;
 
 @Autowired
 private HttpSession httpSession;
+
 
 @PostMapping("acesso-docente")
 public String acessoDocente(HttpSession session,@RequestParam String cpf, @RequestParam String senha) {
@@ -102,21 +106,31 @@ public String acessoDocente(HttpSession session,@RequestParam String cpf, @Reque
     }
 
     @GetMapping("/lancar-notas")
-    public ModelAndView lancarNotas(HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView("areaProf/lancar-notas");
-        Docente docente = (Docente) session.getAttribute("docente");
-        if (docente != null) {
-           
-        
+public ModelAndView lancarNotas(HttpSession session) {
+    ModelAndView modelAndView = new ModelAndView("areaProf/lancar-notas");
+    Docente docente = (Docente) session.getAttribute("docente");
+    if (docente != null) {
         modelAndView.addObject("docente", docente);
-        modelAndView.addObject("alunos", ar.findAll());
+        
+        // Recuperar apenas o docente com base no CPF armazenado na sessão
+        Docente docenteFromDb = dr.findByCpf(docente.getCpf());
+        
+        if (docenteFromDb != null) {
+            modelAndView.addObject("docentes", Collections.singletonList(docenteFromDb));
             
+            // Recuperar todos os alunos
+            modelAndView.addObject("alunos", ar.findAll());
         } else {
-            // Redirecionar para a página de login se o professor não estiver logado
+            // Caso não encontre o docente com base no CPF, redireciona para a página de login
             modelAndView.setViewName("redirect:/login-docente");
         }
-        return modelAndView;
+    } else {
+        // Redirecionar para a página de login se o professor não estiver logado
+        modelAndView.setViewName("redirect:/login-docente");
     }
+    return modelAndView;
+}
+
     
 @GetMapping("/logout")
 public String logout(HttpSession session) {

@@ -65,6 +65,7 @@ public String acessoDocente(HttpSession session,@RequestParam String rg, @Reques
     public ModelAndView listarDocentes() {
         ModelAndView mv = new ModelAndView("interna/aluno/list-aluno");
         mv.addObject("alunos", ar.findAll());
+        
         return mv;
     }
     @GetMapping("/aluno-filtrado")

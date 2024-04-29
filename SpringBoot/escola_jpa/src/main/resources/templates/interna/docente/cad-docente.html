@@ -40,7 +40,11 @@
 
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Turma" name="turma">
+                                    <label for="turmas">Selecione as matérias:</label><br>
+                                    <select id="turmas" name="turma_docente[]" multiple>
+                                        <!-- Loop through all available subjects -->
+                                        <option th:each="turma : ${turmas}" th:value="${turma.id_turmas}" th:text="${turma.nome}"></option>
+                                    </select><br><br>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" placeholder="Senha" name="senha">

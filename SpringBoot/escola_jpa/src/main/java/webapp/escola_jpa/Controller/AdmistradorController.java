@@ -19,11 +19,13 @@ import webapp.escola_jpa.Model.Aluno;
 import webapp.escola_jpa.Model.Docente;
 import webapp.escola_jpa.Model.Materias;
 import webapp.escola_jpa.Model.PreCadAdm;
+import webapp.escola_jpa.Model.Turmas;
 import webapp.escola_jpa.Repository.AdministradorRepository;
 import webapp.escola_jpa.Repository.AlunoRepository;
 import webapp.escola_jpa.Repository.DocenteRepository;
 import webapp.escola_jpa.Repository.MateriasRepository;
 import webapp.escola_jpa.Repository.PreCadAdmRepository;
+import webapp.escola_jpa.Repository.TurmasRepository;
 
 
 @Controller
@@ -39,6 +41,8 @@ public class AdmistradorController {
     private AlunoRepository alr;
     @Autowired
     private MateriasRepository mr;
+    @Autowired
+    private TurmasRepository tr;
 
     boolean acessoAdm = false;
 
@@ -82,14 +86,14 @@ public class AdmistradorController {
         }
 
     }
-    @PostMapping("cadastro-docente")
-    public String postCadastroDoc(Docente doc) {
+    // @PostMapping("cadastro-docente")
+    // public String postCadastroDoc(Docente doc) {
        
-        dr.save(doc);
-        System.out.println("Cadastro Realizado com Sucesso");
+    //     dr.save(doc);
+    //     System.out.println("Cadastro Realizado com Sucesso");
         
-        return "interna/interna-adm";
-    }
+    //     return "interna/interna-adm";
+    // }
     // @PostMapping("cadastro-aluno")
     // public String postCadastroAluno(@RequestParam Aluno aluno) {
        
@@ -98,6 +102,46 @@ public class AdmistradorController {
         
     //     return "interna/interna-adm";
     // }
+    @PostMapping("/cadastro-docente")
+public String postCadastroDocente(@RequestParam("turma_docente[]") List<String> turma_docente,
+                                  @RequestParam String cpf,
+                                  @RequestParam String nome,
+                                  @RequestParam String materia,
+                                  @RequestParam String senha,
+                                  Model model) {
+    // Verifica se algum campo obrigatório está vazio
+    if (nome == null || nome.isEmpty() ||
+            cpf == null || cpf.isEmpty() ||
+            materia == null || materia.isEmpty() ||
+            senha == null || senha.isEmpty()) {
+        model.addAttribute("mensagem", "Por favor, preencha todos os campos.");
+        return "interna/interna-adm";
+    }
+
+    // Verifica se o docente já existe no banco de dados
+    Optional<Docente> docenteOptional = dr.findById(cpf);
+    Docente docente = docenteOptional.orElseGet(() -> new Docente()); // Se não existir, cria um novo docente
+
+    // Preenche os detalhes do docente
+    docente.setNome(nome);
+    docente.setCpf(cpf);
+    docente.setMateria(materia);
+    docente.setSenha(senha);
+
+    // Atualiza as turmas selecionadas para o docente
+    Set<Turmas> turmasSelecionadas = new HashSet<>();
+    for (String turmaId : turma_docente) {
+        Optional<Turmas> turmasOptional = tr.findById(Long.parseLong(turmaId));
+        turmasOptional.ifPresent(turmasSelecionadas::add);
+    }
+    docente.setTurmas(turmasSelecionadas);
+
+    // Salva o docente no banco de dados
+    dr.save(docente);
+    model.addAttribute("mensagem", "Cadastro de docente realizado com sucesso!");
+    return "interna/interna-adm";
+}
+
     @PostMapping("/cadastro-aluno")
 public String postCadastroAluno(@RequestParam("materia_aluno[]") List<String> materia_aluno,
         @RequestParam String rg,

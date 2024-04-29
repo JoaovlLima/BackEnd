@@ -11,6 +11,7 @@ import java.util.List;
 
 import webapp.escola_jpa.Model.Materias;
 import webapp.escola_jpa.Repository.MateriasRepository;
+import webapp.escola_jpa.Repository.TurmasRepository;
 
 @Controller
 public class MateriasController {
@@ -18,10 +19,14 @@ public class MateriasController {
     @Autowired
     private MateriasRepository mr;
 
+    @Autowired
+    private TurmasRepository tr;
+
    @RequestMapping(value = "/cad-docente", method = RequestMethod.GET)
 public ModelAndView listarfuncionario() {
 ModelAndView mv = new ModelAndView("interna/docente/cad-docente");
 mv.addObject("materias", mr.findAll());
+mv.addObject("turmas",tr.findAll() );
 return mv;
 }
 
@@ -29,6 +34,7 @@ return mv;
 public ModelAndView listarAluno() {
 ModelAndView mv = new ModelAndView("interna/aluno/cad-aluno");
 mv.addObject("materias", mr.findAll());
+mv.addObject("turmas",tr.findAll() );
 return mv;
 }
     

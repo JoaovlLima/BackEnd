@@ -25,8 +25,12 @@
                 <td th:text="${docente.cpf}"></td>
                 <td th:text="${docente.nome}"></td>
                 <td th:text="${docente.materia}"></td>
-                <td th:text="${docente.turma}"></td>
-                <td class="btn-cell">
+                <td>
+                    <ul>
+                        <li th:each="turma : ${docente.turmas}" th:text="${turma.nome}"></li>
+                    </ul>
+                </td>
+                <td class="btn-cell">   
                     <a th:href="@{'/deletar-docente/' + ${docente.cpf} }" class="btn-excluir">
                         <i class="fas fa-trash-alt"></i> Excluir
                     </a>
