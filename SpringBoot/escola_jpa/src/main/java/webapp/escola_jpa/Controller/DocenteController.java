@@ -56,7 +56,7 @@ public String acessoDocente(HttpSession session,@RequestParam String cpf, @Reque
 
            httpSession.setAttribute("docente", docente);
            // Definindo loggedIn como true na sessão
-           httpSession.setAttribute("loggedIn", true);
+           httpSession.setAttribute("prof", true);
             return "redirect:/home";
         } else {
             return "redirect:/login-docente";
@@ -137,7 +137,7 @@ public String logout(HttpSession session) {
     // Limpa todos os atributos da sessão
     session.invalidate();
     // Redireciona o usuário para a página de login
-    return "redirect:/login-docente";
+    return "redirect:/home";
 }
 
 }

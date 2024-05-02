@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import webapp.escola_jpa.Model.Administrador;
 import webapp.escola_jpa.Model.Aluno;
 import webapp.escola_jpa.Model.Docente;
@@ -43,6 +45,7 @@ public class AdmistradorController {
     private MateriasRepository mr;
     @Autowired
     private TurmasRepository tr;
+   
 
     boolean acessoAdm = false;
 
@@ -57,10 +60,15 @@ public class AdmistradorController {
         return "login/login-adm";
     }
      @GetMapping("/interna-adm")
-    public String acessoPageInternaAdm() {
+    public String acessoPageInternaAdm(HttpServletRequest request) {
+  boolean IsAdm = (boolean) request.getSession().getAttribute("adm");
         String vaiPara = "";
         if (acessoAdm) {
+            if(IsAdm){
             vaiPara = "interna/interna-adm";
+        }else{
+            vaiPara = "login/login-adm";
+        }
         } else {
             vaiPara = "login/login-adm";
         }
@@ -69,7 +77,7 @@ public class AdmistradorController {
 
     @PostMapping("acesso-adm")
     public String acessoAdm(@RequestParam String cpf,
-            @RequestParam String senha) {
+            @RequestParam String senha, HttpServletRequest request ) {
         try {
             boolean verificaCpf = ar.existsById(cpf);
             boolean verificaSenha = ar.findByCpf(cpf).getSenha().equals(senha);
@@ -77,6 +85,7 @@ public class AdmistradorController {
             if (verificaCpf && verificaSenha) {
                 acessoAdm = true;
                 url = "redirect:/interna-adm";
+                request.getSession().setAttribute("adm", true);
             } else {
                 url = "redirect:/login-adm";
             }
