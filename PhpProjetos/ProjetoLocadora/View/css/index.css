@@ -1,0 +1,98 @@
+header {
+    background-color: #01602A;
+    padding: 20px 0;
+    margin-top: 20px; /* Adicionando margem ao topo do header */
+    border-radius: 10px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    z-index: 2;
+    position: absolute;
+    top: 30px; /* Posicionando o header no topo da página */
+    left: 50%; /* Alinhando o centro do header com o centro da página */
+    transform: translateX(-50%); /* Centralizando horizontalmente */
+  }
+  
+  .carousel {
+    background-color: #8BC34A; /* Fundo verde do carrossel */
+    width: 90%; /* Ajuste o tamanho conforme necessário */
+    height: 400px; /* Ajuste a altura conforme necessário */
+    margin-top: 140px; /* Ajustando a distância entre o carrossel e o header */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    position: relative; /* Mantendo o posicionamento como relative */
+    z-index: 1;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .header-info {
+    display: flex;
+  }
+  
+  .header-info p {
+    margin-right: 20px;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  .header-info p:hover {
+    color: #ff6600;
+  }
+  
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 100%;
+  }
+  .header-links {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .header-links a:hover {
+    color: #ff6600;
+  }
+
+
+  .carousel {
+    background-color: #8BC34A; /* Fundo verde do carrossel */
+    width: 90%; /* Ajuste o tamanho conforme necessário */
+    height: 400px; /* Ajuste a altura conforme necessário */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+  
+
+    
+  }
+  
