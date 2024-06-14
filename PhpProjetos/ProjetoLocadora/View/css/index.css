@@ -1,6 +1,6 @@
 header {
     background-color: #01602A;
-    padding: 20px 0;
+    padding: 20px ;
     margin-top: 20px; /* Adicionando margem ao topo do header */
     border-radius: 10px;
     width: 70%;
@@ -13,7 +13,9 @@ header {
     left: 50%; /* Alinhando o centro do header com o centro da página */
     transform: translateX(-50%); /* Centralizando horizontalmente */
   }
-  
+  .main-container{
+    padding: 12%;
+  }
   .carousel {
     background-color: #8BC34A; /* Fundo verde do carrossel */
     width: 100%; /* Ajuste o tamanho conforme necessário */

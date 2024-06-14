@@ -1,0 +1,84 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: #006400;
+    margin: 20px 0;
+}
+
+.button {
+    background-color: #006400;
+    color: #fff;
+    border: 2px solid #006400;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #004d00;
+    border-color: #004d00;
+}
+
+.main-container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px;
+    text-align: center;
+}
+
+.car-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.carousel-card {
+    width: 28%;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #e0f7fa;
+    border-radius: 10px;
+    transition: transform 0.5s ease-in-out;
+    color: #006400;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.carousel-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.carousel-card p {
+    margin: 10px 0;
+}
+
+.carousel-card a {
+    color: #004d00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.carousel-card a:hover {
+    text-decoration: underline;
+}

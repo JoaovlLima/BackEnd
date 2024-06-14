@@ -20,7 +20,7 @@ try {
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
     );
     
-  echo "Conectado";
+//   echo "Conectado";
     /* $stmt1 = $pdo->prepare($sql1);
     $stmt1->execute();
     $stmt2 = $pdo->prepare($sql2);

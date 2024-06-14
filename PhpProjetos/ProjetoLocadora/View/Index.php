@@ -1,5 +1,5 @@
 <?php
-include_once('C:\Users\Aluno\Documents\JoaoLima\BackEnd\PhpProjetos\ProjetoLocadora/Connection/conectaBD.php');
+include_once('../Connection/conectaBD.php');
 
 
 
@@ -17,24 +17,9 @@ include_once('C:\Users\Aluno\Documents\JoaoLima\BackEnd\PhpProjetos\ProjetoLocad
 
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo">
-        <img src="logo.png" alt="Allocate">
-        <h1>Allocate</h1>
-      </div>
-      <div class="header-info">
-        <p>Carros</p>
-        <p>Grupo de Agências</p>
-        <p>Ofertas</p>
-      </div>
-      <div class="header-links">
-        <a href="#">Minhas Reservas</a>
-        <a href="#">Login</a>
-      </div>
-    </nav>
-  </header>
-
+  
+<?php include './fragmentos/hearder.php' ?>
+  <?=template_header('Header')?>
   
     <div class="carousel" style="background-color: #8BC34A;">
       <!-- Aqui você pode adicionar as imagens do seu carrossel posteriormente -->
@@ -59,7 +44,7 @@ include_once('C:\Users\Aluno\Documents\JoaoLima\BackEnd\PhpProjetos\ProjetoLocad
                   $modelo = htmlspecialchars($carro['modelo']);
                   $tipo = htmlspecialchars($carro['tipo']);
                   $ano = intval($carro['ano']);
-                  $img = htmlspecialchars($carro['img']); // Supondo que o nome da imagem está na coluna 'img'
+                  $img = htmlspecialchars($carro['img']); 
 
                   // Exibir o card com os detalhes do carro
                   echo "<div class='carousel-card'>";
