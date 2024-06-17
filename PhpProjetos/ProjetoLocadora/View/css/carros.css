@@ -34,51 +34,132 @@ h1 {
 }
 
 .main-container {
-    max-width: 1200px;
     width: 100%;
-    padding: 20px;
+    padding: 12%;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    margin: 20px;
+    margin: 0px 10px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .car-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
+    justify-content: center; /* Centraliza os cards */
+    gap: 30px; /* Diminui o espaçamento entre os cards */
+    max-width: 1060px; /* Largura máxima do container para manter 3 cards por linha */
+    margin: 0 auto; /* Centraliza o container */
 }
 
-.carousel-card {
-    width: 28%;
+.carousel-card2 {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(33.33% - 20px);
+    width: 36ch;
+    height: 350px;
     box-sizing: border-box;
-    padding: 10px;
-    background-color: #e0f7fa;
+ padding: 20px;
+    background-color: #f4fbfc;
     border-radius: 10px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
     transition: transform 0.5s ease-in-out;
     color: #006400;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.429);
     margin-bottom: 20px;
+    perspective: 1000px; /* Adicionado para a perspectiva 3D */
 }
 
-.carousel-card img {
+.carousel-card2-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+.carousel-card2.flipped .carousel-card2-inner {
+    transform: rotateY(180deg);
+}
+
+.carousel-card2-front, .carousel-card2-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.carousel-card2-back {
+    background-color: #fff;
+    transform: rotateY(180deg);
+}
+
+.carousel-card2 img {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
 }
 
-.carousel-card p {
+.carousel-card2 p {
     margin: 10px 0;
 }
 
-.carousel-card a {
+.carousel-card2 a {
     color: #004d00;
     text-decoration: none;
     font-weight: bold;
 }
 
-.carousel-card a:hover {
+.carousel-card2 a:hover {
     text-decoration: underline;
+}
+
+h1 {
+    text-align: left;
+    margin-left: 10%;
+}
+
+.botao-personalizado {
+    display: inline-block;
+    padding: 10px 50px;
+    margin: 10px 0;
+    font-size: 16px;
+    color: #255700;
+    background-color: #44d320;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.botao-personalizado:hover {
+    background-color: #255700;
+    color: #44d320;
+}
+
+/* Estilização do cabeçalho */
+.header-container {
+    margin-right: 100px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Estilização da caixa de seleção */
+.city-select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }

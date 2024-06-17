@@ -1,4 +1,9 @@
 Select * from carros;
+select * from agencias;
+select * from pertence;
+select * from alocacao;
+select * from envia;
+select * from clientes;
 
 UPDATE Carros
 SET img = 
