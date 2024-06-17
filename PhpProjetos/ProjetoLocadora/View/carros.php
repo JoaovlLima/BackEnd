@@ -88,7 +88,10 @@
                         echo "<div class='carousel-card2-front'>";
                         echo "<img src='./img/$img' alt='$modelo'>";
                         echo "<p>Modelo: $modelo</p>";
-                        echo "<a href='alocacao.php'><button class='botao-personalizado'>Comprar</button></a>"; // Botão adicionado
+                        echo "<form action='alocacao.php' method='get'>";
+                        echo "<input type='hidden' name='placa' value='$placa'>";
+                        echo "<button type='submit' class='botao-personalizado'>Comprar</button>";
+                        echo "</form>";
                         echo "<p><a href='javascript:void(0)'>Ver detalhes</a></p>"; // Link para a página de detalhes
                         echo "</div>";
                         echo "<div class='carousel-card2-back'>";

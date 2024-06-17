@@ -1,12 +1,37 @@
 <?php
 // alocacao.php
+include_once "../Connection/conectaBD.php";
+// Inicializa as variáveis de data com valores padrão vazios
+$data_alocacao = '';
+$data_devolucao = '';
 
-// Verifica se os dados foram enviados via POST
+// Verifica se as datas foram enviadas via POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recebe os dados do formulário do cabeçalho
-    $cidade = $_POST['cidade'] ?? '';
     $data_alocacao = $_POST['data_alocacao'] ?? '';
     $data_devolucao = $_POST['data_devolucao'] ?? '';
+}
+
+// Verifica se a placa do carro foi enviada via GET
+if (isset($_GET['placa'])) {
+    $placa = $_GET['placa'];
+
+    // Consulta SQL para buscar informações do carro específico
+    $sql = "SELECT modelo FROM carros WHERE placa = :placa";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':placa', $placa);
+    $stmt->execute();
+    $carro = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Verifica se o carro foi encontrado
+    if ($carro) {
+        $modelo = htmlspecialchars($carro['modelo']);
+    } else {
+        $modelo = 'Carro não encontrado';
+    }
+} else {
+    // Se não foi recebida a placa do carro, define como vazio
+    $placa = '';
+    $modelo = '';
 }
 ?>
 
@@ -16,17 +41,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Locadora de Carros - Alocar Carro</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- Estilo CSS, ajuste conforme necessário -->
+    <link rel="stylesheet" href="/View/css/alocacao.css"> <!-- Inclua seu arquivo CSS de estilo -->
 </head>
 <body>
-
-<div class="container">
+<?php include './fragmentos/hearder.php'; ?>
+<?=template_header('Header')?>
+<div class="main-container">
     <h1>Alocar Carro</h1>
     
     <form action="../Connection/processar_aluguel.php" method="post">
         <label for="carro">Escolha um carro:</label>
         <select id="carro" name="placa" required>
-            <option value="">Selecione um carro</option>
+            <option value="<?php echo htmlspecialchars($placa); ?>" selected><?php echo htmlspecialchars($modelo)?>  - <?php echo htmlspecialchars($placa)?></option>
             <?php
             include_once "../Connection/conectaBD.php";
 
@@ -36,11 +62,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Loop para exibir as opções de carros
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $placa = htmlspecialchars($row['placa']);
-                $modelo = htmlspecialchars($row['modelo']);
-                // Verifica se foi enviado um valor para placa e seleciona a opção correspondente
-                $selected = ($_POST['placa'] == $placa) ? 'selected' : '';
-                echo "<option value='$placa' $selected>$modelo - $placa</option>";
+                $placa_option = htmlspecialchars($row['placa']);
+                $modelo_option = htmlspecialchars($row['modelo']);
+                // Exclui o carro já escolhido da lista de opções
+                if ($placa_option !== $placa) {
+                    echo "<option value='$placa_option'>$modelo_option - $placa_option</option>";
+                }
             }
             ?>
         </select>

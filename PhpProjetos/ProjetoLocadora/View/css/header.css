@@ -1,113 +1,116 @@
 header {
-    background-color: #01602A;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    color: white;
-    z-index: 2;
-    position: relative;
-    top: 30px;
-    left: 37%;
-    transform: translateX(-50%);
-  }
-  
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-  }
-  
-  .header-info {
-    display: flex;
-  }
-  
-  .header-info p {
-    margin-right: 20px;
-    color: #ffffff;
-    font-weight: bold;
-  }
-  
-  .header-info p:hover {
-    color: #ff6600;
-  }
-  
-  .header-links {
-    display: flex;
-    align-items: center;
-  }
-  
-  .header-links a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: bold;
-  }
-  
-  .header-links a:hover {
-    color: #ff6600;
-  }
-  
-  .header-inputs {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #004D29;
-    width: 100%;
-    padding: 10px;
-    border-radius: 20px;
-    margin-top: 10px;
-  }
-  
-  .input-group {
-    display: flex;
-    align-items: center;
-  }
-  
-  .input-group label {
-    font-size: small;
-    color: white;
-    font-weight: bold;
-    margin-right: 10px; /* Espaçamento entre label e input */
-  }
-  
-  .input-group input[type="text"],
-  .input-group input[type="date"] {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    font-size: 16px;
-    width: 200px;
-  }
-  
-  .input-group input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-  }
-  
-  .input-group button {
-    padding: 10px 20px; /* Ajuste o padding conforme necessário */
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
+  background-color: #01602A;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  z-index: 2;
+  position: relative;
+  top: 30px;
+  left: 37%; /* Centraliza horizontalmente */
+  transform: translateX(-50%);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.header-info {
+  display: flex;
+}
+
+.header-info p {
+  margin-right: 20px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.header-info p:hover {
+  color: #ff6600;
+}
+
+.header-links {
+  display: flex;
+  align-items: center;
+}
+
+.header-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.header-links a:hover {
+  color: #ff6600;
+}
+
+.header-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center ;
+  background-color: #004D29;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+  flex-wrap: wrap; /* Para que os elementos possam quebrar linha, se necessário */
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px; /* Espaçamento entre grupos de input */
+}
+
+.input-group label {
+  font-size: small;
+  color: white;
+  font-weight: bold;
+  margin-right: 10px; /* Espaçamento entre label e input */
+}
+
+.input-group input[type="text"],
+.input-group input[type="date"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  width: 200px;
+}
+
+.input-group input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.input-group button {
+  margin-top: 10px;
+  padding: 10px 20px; /* Ajuste o padding conforme necessário */
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}

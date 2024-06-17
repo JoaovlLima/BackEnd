@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Calcula o valor total do aluguel
     $valor_total = calcularValorTotal($placa, $data_inicio, $data_entrega, $pdo);
-
+   
     // Prepara a SQL para inserção na tabela 'alocacao'
     $sql = "INSERT INTO alocacao (id_locacao,data_alocacao, data_entrega, valor_total, placa, cnh, re)
             VALUES (32,:data_inicio, :data_entrega, :valor_total, :placa, :cnh, :re)";
@@ -63,6 +63,7 @@ function calcularValorTotal($placa, $data_inicio, $data_entrega, $pdo) {
         $valor_total = $preco_dia * $numero_dias;
 
         return $valor_total;
+
     } catch (Exception $e) {
         echo "Erro ao calcular o valor total: " . $e->getMessage();
         return 0; // Retorna 0 em caso de erro

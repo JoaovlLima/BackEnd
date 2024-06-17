@@ -1,23 +1,12 @@
 <?php 
 function template_header($title) {
-    global $blocos_salas; // Torna a variável global disponível dentro da função
     echo <<<EOT
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Locadora de Carros Allocate</title>
-  <link rel="stylesheet" href="/View/css/header.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-</head>
-<body>
-   <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Locadora de Carros Allocate</title>
+  <title>$title</title>
   <link rel="stylesheet" href="/View/css/header.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -64,5 +53,4 @@ function template_header($title) {
     </header>
 EOT;
 }
-
 ?>
