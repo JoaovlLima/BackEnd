@@ -27,7 +27,7 @@ function template_header($title) {
         </div>
         <div class="header-links">
           <a href="#">Minhas Reservas</a>
-          <a href="#">Login</a>
+          <a href="../View/interna/adm/login_adm.php">Login</a>
         </div>
       </nav>
       <!-- Inputs dentro do header -->
