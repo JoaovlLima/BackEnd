@@ -9,6 +9,6 @@ if (isset($_GET['re'])) {
     $stmt->execute([':re' => $re]);
 
     echo "Funcionário deletado com sucesso!";
-    header('Location: read.php');
+    header('Location: ../../view/interna/funcionarios/list_funcionarios.php');
 }
 ?>

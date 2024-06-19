@@ -57,7 +57,7 @@ if (isset($_GET['placa'])) {
             include_once "../Connection/conectaBD.php";
 
             // Consulta SQL para buscar carros disponíveis
-            $sql = "SELECT placa, modelo FROM carros WHERE disponibilidade = 'Disponível'";
+            $sql = "SELECT placa, modelo FROM carros WHERE disponibilidade = 'Disponivel'";
             $stmt = $pdo->query($sql);
 
             // Loop para exibir as opções de carros

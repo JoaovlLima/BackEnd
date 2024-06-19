@@ -1,7 +1,13 @@
 <?php
 include_once('../Connection/conectaBD.php');
 
+session_start();
 
+// Verifica se o funcionário está logado
+if (!isset($_SESSION['funcionario'])) {
+    header("Location: Login.php");
+    exit();
+}
 
 ?>
 
@@ -66,8 +72,10 @@ include_once('../Connection/conectaBD.php');
     </div>
 
     <div class="botao">
+      <a href="carros.php">
     <button class="custom-button">Confira todos os carros</button>
-    </div>
+    </a>
+  </div>
   <main>
  
     <!-- Seções de destaque, pesquisa rápida, destaques de carros, etc. -->

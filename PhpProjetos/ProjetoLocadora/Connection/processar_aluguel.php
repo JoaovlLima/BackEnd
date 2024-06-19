@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verifica se a execução foi bem-sucedida
     if ($stmt->execute()) {
         // Atualiza a disponibilidade do carro para 'indisponível'
-        $sqlUpdate = "UPDATE carros SET disponibilidade = 'indisponível' WHERE placa = :placa";
+        $sqlUpdate = "UPDATE carros SET disponibilidade = 'indisponivel' WHERE placa = :placa";
         $stmtUpdate = $pdo->prepare($sqlUpdate);
         $stmtUpdate->bindParam(':placa', $placa);
 

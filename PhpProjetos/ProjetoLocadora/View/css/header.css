@@ -37,10 +37,11 @@ nav {
   display: flex;
 }
 
-.header-info p {
+.header-info p a {
   margin-right: 20px;
   color: #ffffff;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .header-info p:hover {
@@ -113,4 +114,9 @@ nav {
   color: white;
   font-size: 16px;
   cursor: pointer;
+}
+.form-alocacao{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

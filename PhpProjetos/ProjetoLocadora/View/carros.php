@@ -50,8 +50,8 @@
             <label for="disponibilidade">Disponibilidade: </label>
             <select id="disponibilidade" name="disponibilidade" class="availability-select" onchange="this.form.submit()">
                 <option value="todos">Todos</option>
-                <option value="Disponível" <?php if(isset($_POST['disponibilidade']) && $_POST['disponibilidade'] == 'Disponível') echo 'selected'; ?>>Disponível</option>
-                <option value="	indisponível" <?php if(isset($_POST['disponibilidade']) && $_POST['disponibilidade'] == 'indisponível') echo 'selected'; ?>>Não disponível</option>
+                <option value="Disponivel" <?php if(isset($_POST['disponibilidade']) && $_POST['disponibilidade'] == 'Disponível') echo 'selected'; ?>>Disponível</option>
+                <option value="	indisponivel" <?php if(isset($_POST['disponibilidade']) && $_POST['disponibilidade'] == 'indisponível') echo 'selected'; ?>>Não disponível</option>
             </select>
         </form>
     </div>
@@ -106,7 +106,7 @@
                         echo "<p>Modelo: $modelo</p>";
                         echo "<form action='alocacao.php' method='get'>";
                         echo "<input type='hidden' name='placa' value='$placa'>";
-                        echo "<button type='submit' class='botao-personalizado'>Comprar</button>";
+                        echo "<button type='submit' class='botao-personalizado'>Reserve Agora</button>";
                         echo "</form>";
                         echo "<p><a href='javascript:void(0)'>Ver detalhes</a></p>"; // Link para a página de detalhes
                         echo "</div>";
@@ -134,6 +134,9 @@
         }
         ?>
     </div>
+    <a href="cad_carros.php">
+    <button class="button">Adicionar Carros</button>
+    </a>
 </div>
 </body>
 </html>

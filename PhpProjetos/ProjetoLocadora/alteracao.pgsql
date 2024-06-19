@@ -5,7 +5,12 @@ select * from alocacao;
 select * from envia;
 select * from clientes;
 Select * from funcionario;
+select * from adm;
 
+
+UPDATE Carros
+SET img = modelo || '.jpg'
+WHERE img IS NULL;
 
 UPDATE Carros
 SET img = 
@@ -33,5 +38,12 @@ VALUES ('1234', '1234', 'Admin', 'admin@admin.com');
 
 UPDATE carros 
 SET disponibilidade = 'indisponível' 
-WHERE disponibilidade = 'Não Disponível'
+WHERE disponibilidade = 'Não Disponível';
+
+update carros
+set disponibilidade = 'indisponivel'
+where disponibilidade = 'indisponível';
+
+insert into pertence 
+values (1,'WER3490');
 

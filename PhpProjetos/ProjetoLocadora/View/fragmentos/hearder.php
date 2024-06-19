@@ -22,17 +22,18 @@ function template_header($title) {
         </div>
         <div class="header-info">
           <p><a href="/View/carros.php">Carros</a></p>
-          <p>Grupo de Agências</p>
+          <p><a href="/View/agencias.php">Grupo de Agências</a></p>
           <p>Ofertas</p>
         </div>
         <div class="header-links">
+          <a href="../Connection/logout.php">Logout</a>
           <a href="#">Minhas Reservas</a>
-          <a href="../View/interna/adm/login_adm.php">Login</a>
+          <a href="../View/interna/adm/login_adm.php">Login ADM</a>
         </div>
       </nav>
       <!-- Inputs dentro do header -->
       <div class="header-inputs">
-        <form action="./alocacao.php" method="post">
+        <form class="form-alocacao" action="./alocacao.php" method="post">
           <div class="input-group">
             <label for="cidade">Escolha sua cidade:</label>
             <input type="text" id="cidade" name="cidade" placeholder="Escolha sua cidade">
