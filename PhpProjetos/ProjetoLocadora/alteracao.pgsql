@@ -29,5 +29,9 @@ CREATE TABLE adm (
 );
 
 INSERT INTO adm (cpf, senha, nome, email) 
-VALUES ('123.456.789-00', '1234', 'Admin', 'admin@admin.com');
+VALUES ('1234', '1234', 'Admin', 'admin@admin.com');
+
+UPDATE carros 
+SET disponibilidade = 'indisponível' 
+WHERE disponibilidade = 'Não Disponível'
 

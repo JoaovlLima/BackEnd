@@ -18,7 +18,7 @@ $funcionarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h1>Lista de Funcionários</h1>
     <table border="1">
         <tr>
-            <th>ID</th>
+            <th>RE</th>
             <th>Nome</th>
             <th>Sobrenome</th>
             <th>Salário</th>
@@ -30,7 +30,7 @@ $funcionarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </tr>
         <?php foreach ($funcionarios as $funcionario): ?>
             <tr>
-                <td><?= htmlspecialchars($funcionario['id']) ?></td>
+                <td><?= htmlspecialchars($funcionario['re']) ?></td>
                 <td><?= htmlspecialchars($funcionario['nome']) ?></td>
                 <td><?= htmlspecialchars($funcionario['sobrenome']) ?></td>
                 <td><?= htmlspecialchars($funcionario['salario']) ?></td>
@@ -39,12 +39,12 @@ $funcionarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td><?= htmlspecialchars($funcionario['numero_da_agencia']) ?></td>
                 <td><?= htmlspecialchars($funcionario['agencia_cidade']) ?></td>
                 <td>
-                    <a href="update.php?id=<?= $funcionario['id'] ?>">Editar</a>
-                    <a href="delete.php?id=<?= $funcionario['id'] ?>" onclick="return confirm('Tem certeza que deseja deletar este funcionário?')">Deletar</a>
+                    <a href="../funcionarios/editar_funcionario.php?re=<?= $funcionario['re'] ?>">Editar</a>
+                    <a href="../../../Connection/delete_funcionario.php?re=<?= $funcionario['re'] ?>" onclick="return confirm('Tem certeza que deseja deletar este funcionário?')">Deletar</a>
                 </td>
             </tr>
         <?php endforeach; ?>
     </table>
-    <a href="create.php">Adicionar Funcionário</a>
+    <a href="../funcionarios/cad_funcionario.php">Adicionar Funcionário</a>
 </body>
 </html>

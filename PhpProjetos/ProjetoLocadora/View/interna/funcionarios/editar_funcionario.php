@@ -1,17 +1,17 @@
 <?php
 include '../../../Connection/conectaBD.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-    $id = $_GET['id'];
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['re'])) {
+    $re = $_GET['re'];
 
-    $sql = "SELECT * FROM funcionario WHERE id = :id";
+    $sql = "SELECT * FROM funcionario WHERE re = :re";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([':id' => $id]);
+    $stmt->execute([':re' => $re]);
     $funcionario = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
-    $id = $_POST['id'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['re'])) {
+    $re = $_POST['re'];
     $nome = $_POST['nome'];
     $sobrenome = $_POST['sobrenome'];
     $salario = $_POST['salario'];
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
         ':cargo' => $cargo,
         ':numero_da_agencia' => $numero_da_agencia,
         ':cidade' => $cidade,
-        ':id' => $id
+        ':re' => $re
     ]);
     echo "Funcionário atualizado com sucesso!";
     header('Location: read.php');
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
 <body>
     <h1>Atualizar Funcionário</h1>
     <form method="post" action="update.php">
-        <input type="hidden" name="id" value="<?= htmlspecialchars($funcionario['id']) ?>">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($funcionario['re']) ?>">
         <label>Nome: <input type="text" name="nome" value="<?= htmlspecialchars($funcionario['nome']) ?>" required></label><br>
         <label>Sobrenome: <input type="text" name="sobrenome" value="<?= htmlspecialchars($funcionario['sobrenome']) ?>" required></label><br>
         <label>Salário: <input type="text" name="salario" value="<?= htmlspecialchars($funcionario['salario']) ?>" required></label><br>
@@ -64,6 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
         <label>Cidade: <input type="text" name="cidade" value="<?= htmlspecialchars($funcionario['cidade']) ?>" required></label><br>
         <button type="submit">Atualizar</button>
     </form>
-    <a href="read.php">Voltar</a>
+    <a href="../funcionarios/list_funcionarios.php">Voltar</a>
 </body>
 </html>

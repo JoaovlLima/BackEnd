@@ -31,12 +31,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verifica se a execução foi bem-sucedida
     if ($stmt->execute()) {
-        echo "Aluguel registrado com sucesso!";
+        // Atualiza a disponibilidade do carro para 'indisponível'
+        $sqlUpdate = "UPDATE carros SET disponibilidade = 'indisponível' WHERE placa = :placa";
+        $stmtUpdate = $pdo->prepare($sqlUpdate);
+        $stmtUpdate->bindParam(':placa', $placa);
+
+        if ($stmtUpdate->execute()) {
+            echo "Aluguel registrado com sucesso e disponibilidade do carro atualizada para 'indisponível'.";
+        } else {
+            echo "Aluguel registrado com sucesso, mas houve um erro ao atualizar a disponibilidade do carro.";
+        }
     } else {
         echo "Erro ao registrar o aluguel.";
     }
 }
-
 // Função para calcular o valor total do aluguel
 function calcularValorTotal($placa, $data_inicio, $data_entrega, $pdo) {
     try {
