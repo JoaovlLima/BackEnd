@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f3;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #2c6a4b;
+    margin-top: 20px;
+}
+
+form {
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #d0e0dc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+fieldset {
+    border: 1px solid #d0e0dc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+    flex: 1 1 30%;
+    box-sizing: border-box;
+    min-width: 250px;
+}
+
+legend {
+    color: #2c6a4b;
+    padding: 0 10px;
+    font-size: 1.2em;
+}
+
+h2 {
+    color: #2c6a4b;
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2c6a4b;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #d0e0dc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+button {
+    background-color: #2c6a4b;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #235c3b;
+}
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border: 1px solid #d0e0dc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #d0e0dc;
+    text-align: left;
+}
+
+th {
+    background-color: #2c6a4b;
+    color: #ffffff;
+}
+
+td {
+    background-color: #ffffff;
+}
+
+tr:nth-child(even) {
+    background-color: #f0f4f3;
+}

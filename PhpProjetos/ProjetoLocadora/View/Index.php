@@ -28,7 +28,7 @@ if (!isset($_SESSION['funcionario'])) {
   <?=template_header('Header')?>
   
     <div class="carousel" style="background-color: #8BC34A;">
-      <!-- Aqui você pode adicionar as imagens do seu carrossel posteriormente -->
+      <!-- Aqui adicionar as imagens do seu carrossel posteriormente -->
     </div>
  <div class="titulo-cards">
   <h1>Conheça nossa Frota</h1>

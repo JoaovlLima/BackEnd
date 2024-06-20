@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" id="endereco" name="endereco" required><br>
         
         <label for="id_pagamento">ID Pagamento:</label>
-        <input type="number" id="id_pagamento" name="id_pagamento" required><br>
+        <input type="number" id="id_pagamento" name="id_pagamento" ><br>
         
         <label for="cidade">Cidade:</label>
         <input type="text" id="cidade" name="cidade" required><br>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem de Agências</title>
-    <link rel="stylesheet" href="/caminho/para/seu/css/style.css">
+    <link rel="stylesheet" href="">
 </head>
 <body>
     <?php include './fragmentos/hearder.php'; ?>
@@ -18,6 +18,7 @@
             <label for="filtro_cidade">Filtrar por Cidade:</label>
             <input type="text" id="filtro_cidade" name="cidade" value="<?=isset($_GET['cidade']) ? htmlspecialchars($_GET['cidade']) : ''?>">
             <button type="submit">Filtrar</button>
+            <link rel="stylesheet" href="css/agencias.css">
         </form>
 
         <div class="agencias-list">
@@ -63,7 +64,7 @@
 
                     // Exibe o card da agência
                     echo "<div class='agencia-card'>";
-                    echo "<h2>$numero_da_agencia</h2>";
+                    echo "<h2>Agencia : $numero_da_agencia</h2>";
                     echo "<p>Cidade: $cidade</p>";
                     echo "<p>Carros Disponíveis: $carros_disponiveis</p>";
                     echo "<a href='detalhes_agencia.php?agencia=$numero_da_agencia'>Ver Detalhes</a>";

@@ -6,6 +6,7 @@ select * from envia;
 select * from clientes;
 Select * from funcionario;
 select * from adm;
+select * from pagamento;
 
 
 UPDATE Carros
@@ -41,8 +42,8 @@ SET disponibilidade = 'indisponível'
 WHERE disponibilidade = 'Não Disponível';
 
 update carros
-set disponibilidade = 'indisponivel'
-where disponibilidade = 'indisponível';
+set disponibilidade = 'Disponivel'
+where disponibilidade = 'Disponível';
 
 insert into pertence 
 values (1,'WER3490');

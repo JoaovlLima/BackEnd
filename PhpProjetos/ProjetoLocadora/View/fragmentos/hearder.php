@@ -23,11 +23,11 @@ function template_header($title) {
         <div class="header-info">
           <p><a href="/View/carros.php">Carros</a></p>
           <p><a href="/View/agencias.php">Grupo de Agências</a></p>
-          <p>Ofertas</p>
+          <p><a href="/View/clientes/list_cliente.php">Clientes</a></p>
         </div>
         <div class="header-links">
           <a href="../Connection/logout.php">Logout</a>
-          <a href="#">Minhas Reservas</a>
+          <a href="../View/list_alocacao.php">Alocações</a>
           <a href="../View/interna/adm/login_adm.php">Login ADM</a>
         </div>
       </nav>
